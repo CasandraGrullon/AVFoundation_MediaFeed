@@ -15,6 +15,7 @@
 		C6C4E5A32444B998003A6FC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C4E5A22444B998003A6FC5 /* Assets.xcassets */; };
 		C6C4E5A62444B998003A6FC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C4E5A42444B998003A6FC5 /* LaunchScreen.storyboard */; };
 		C6C4E5AE2444BAD1003A6FC5 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4E5AD2444BAD1003A6FC5 /* MediaCell.swift */; };
+		C6DBD4C72444EB50004C11BD /* URL+VideoPreviewThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DBD4C62444EB50004C11BD /* URL+VideoPreviewThumbnail.swift */; };
 		C6F608E42444C40000258450 /* MediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F608E32444C40000258450 /* MediaObject.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		C6C4E5A52444B998003A6FC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6C4E5A72444B998003A6FC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C4E5AD2444BAD1003A6FC5 /* MediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
+		C6DBD4C62444EB50004C11BD /* URL+VideoPreviewThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+VideoPreviewThumbnail.swift"; sourceTree = "<group>"; };
 		C6F608E32444C40000258450 /* MediaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C4E59D2444B995003A6FC5 /* MediaFeedViewController.swift */,
+				C6DBD4C62444EB50004C11BD /* URL+VideoPreviewThumbnail.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C618D4B22444C06200414650 /* HeaderView.swift in Sources */,
+				C6DBD4C72444EB50004C11BD /* URL+VideoPreviewThumbnail.swift in Sources */,
 				C6F608E42444C40000258450 /* MediaObject.swift in Sources */,
 				C6C4E59E2444B995003A6FC5 /* MediaFeedViewController.swift in Sources */,
 				C6C4E59A2444B995003A6FC5 /* AppDelegate.swift in Sources */,

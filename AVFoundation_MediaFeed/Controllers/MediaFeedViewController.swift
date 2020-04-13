@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import AVFoundation
+import AVFoundation //video playback is done on a CALayer
+import AVKit //AVPlayerViewController lives here --> video playback is done using the AVPlayerViewController
 
 class MediaFeedViewController: UIViewController, UIImagePickerControllerDelegate {
     
@@ -15,7 +16,7 @@ class MediaFeedViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var photoButton: UIBarButtonItem!
     @IBOutlet weak var videoButton: UIBarButtonItem!
     
-    private var mediaObjects = [MediaObject] () {
+    private var mediaObjects = [MediaObject]() {
         didSet{
             collectionView.reloadData()
         }
@@ -66,8 +67,8 @@ extension MediaFeedViewController: UIPickerViewDelegate, UINavigationControllerD
                 mediaObjects.append(mediaObject)
             }
         case "public.movie":
-            if let movieURL = info[UIImagePickerController.InfoKey.mediaURL] as? String {
-                let mediaObject = MediaObject(imageData: nil, videoURL: movieURL, caption: nil)
+            if let mediaURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
+                let mediaObject = MediaObject(imageData: nil, videoURL: mediaURL, caption: nil)
                 mediaObjects.append(mediaObject)
             }
         default:
@@ -85,15 +86,30 @@ extension MediaFeedViewController: UICollectionViewDelegateFlowLayout, UICollect
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mediaCell", for: indexPath) as? MediaCell else {
             fatalError("unable to cast to media cell")
         }
-        
+        let media = mediaObjects[indexPath.row]
+        cell.configureCell(media: media)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as? HeaderView else {
             fatalError("could not cast to headerView")
         }
-        
         return headerView
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let mediaObject = mediaObjects[indexPath.row]
+        guard let mediaURL = mediaObject.videoURL else { return }
+        
+        let playerViewController = AVPlayerViewController()
+        
+        let player = AVPlayer(url: mediaURL)
+        playerViewController.player = player
+        
+        present(playerViewController, animated: true) {
+            //play video automatically
+            player.play()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
