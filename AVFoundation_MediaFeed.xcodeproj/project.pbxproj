@@ -64,7 +64,7 @@
 			children = (
 				C6C4E5992444B995003A6FC5 /* AppDelegate.swift */,
 				C6C4E59B2444B995003A6FC5 /* SceneDelegate.swift */,
-				C6F608E32444C40000258450 /* MediaObject.swift */,
+				C6F608E52444C93300258450 /* Model */,
 				C6C4E5AF2444BAF0003A6FC5 /* Controllers */,
 				C6C4E5B02444BAFA003A6FC5 /* ReusableViews */,
 				C6C4E59F2444B995003A6FC5 /* Main.storyboard */,
@@ -90,6 +90,14 @@
 				C618D4B12444C06200414650 /* HeaderView.swift */,
 			);
 			path = ReusableViews;
+			sourceTree = "<group>";
+		};
+		C6F608E52444C93300258450 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C6F608E32444C40000258450 /* MediaObject.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

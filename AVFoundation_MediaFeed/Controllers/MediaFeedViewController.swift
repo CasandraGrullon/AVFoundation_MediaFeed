@@ -7,13 +7,26 @@
 //
 
 import UIKit
+import AVFoundation
 
-class MediaFeedViewController: UIViewController {
+class MediaFeedViewController: UIViewController, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var photoButton: UIBarButtonItem!
     @IBOutlet weak var videoButton: UIBarButtonItem!
     
+    private var mediaObjects = [MediaObject] () {
+        didSet{
+            collectionView.reloadData()
+        }
+    }
+    private lazy var imagePickerController: UIImagePickerController = {
+        let mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)
+        let pickerController = UIImagePickerController()
+        pickerController.mediaTypes = mediaTypes ?? ["kUTTypeImage"]
+        pickerController.delegate = self
+        return pickerController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +36,9 @@ class MediaFeedViewController: UIViewController {
     private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+            videoButton.isEnabled = false
+        }
     }
 
     @IBAction func videoButtonPressed(_ sender: UIBarButtonItem) {
@@ -30,15 +46,39 @@ class MediaFeedViewController: UIViewController {
     }
     
     @IBAction func photoButtonPressed(_ sender: UIBarButtonItem) {
-        
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true)
     }
     
 
 }
-
+extension MediaFeedViewController: UIPickerViewDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // InfoKey has mediaType(String) key, mediaURL(URL) key, and originalImage(UIImage)
+        guard let mediaType = info[UIImagePickerController.InfoKey.mediaType] as? String else {
+            return
+        }
+        switch mediaType {
+        case "public.image":
+            if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                let imageData = originalImage.jpegData(compressionQuality: 1.0)
+                let mediaObject = MediaObject(imageData: imageData, videoURL: nil, caption: nil)
+                mediaObjects.append(mediaObject)
+            }
+        case "public.movie":
+            if let movieURL = info[UIImagePickerController.InfoKey.mediaURL] as? String {
+                let mediaObject = MediaObject(imageData: nil, videoURL: movieURL, caption: nil)
+                mediaObjects.append(mediaObject)
+            }
+        default:
+            print("unsupported media type")
+        }
+        picker.dismiss(animated: true)
+    }
+}
 extension MediaFeedViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return mediaObjects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
