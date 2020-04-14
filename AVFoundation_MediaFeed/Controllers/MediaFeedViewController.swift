@@ -43,15 +43,44 @@ class MediaFeedViewController: UIViewController, UIImagePickerControllerDelegate
     }
 
     @IBAction func videoButtonPressed(_ sender: UIBarButtonItem) {
-        
+        imagePickerController.sourceType = .camera
+        present(imagePickerController, animated: true)
     }
     
     @IBAction func photoButtonPressed(_ sender: UIBarButtonItem) {
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true)
     }
+    private func playRandomVideo(in view: UIView) {
+        
+        //want all non-nil media objects from the MediaObjects array
+        let videoURLs = mediaObjects.compactMap {$0.videoURL}
+        
+        //randomly pick one video (.randomElement returns an optional)
+        if let videoURL = videoURLs.randomElement() {
+            let player = AVPlayer(url: videoURL)
+            
+            //create a sublayer
+            let playerLayer = AVPlayerLayer(player: player)
+            playerLayer.frame = view.bounds //takes up entire header view
+            
+            //set video aspect ratio
+            playerLayer.videoGravity = .resizeAspect
+            
+            //remove all sublayers from headerview
+            //if we dont do this the videos will stack on top of each other
+            view.layer.sublayers?.removeAll()
+            
+            //add playerLayer to the headerview
+            view.layer.addSublayer(playerLayer)
+            player.play()
+            
+            //player.pause()
+            player.isMuted = true
+        }
+        
+    }
     
-
 }
 extension MediaFeedViewController: UIPickerViewDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -94,6 +123,7 @@ extension MediaFeedViewController: UICollectionViewDelegateFlowLayout, UICollect
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as? HeaderView else {
             fatalError("could not cast to headerView")
         }
+        playRandomVideo(in: headerView)
         return headerView
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
