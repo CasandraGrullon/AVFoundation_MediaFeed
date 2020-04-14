@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C618D4B22444C06200414650 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C618D4B12444C06200414650 /* HeaderView.swift */; };
+		C66693AA2446178D0013BFBA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66693A92446178D0013BFBA /* CoreDataManager.swift */; };
+		C66693AE244619130013BFBA /* MediaFeedDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C66693AC244619130013BFBA /* MediaFeedDataModel.xcdatamodeld */; };
 		C6C4E59A2444B995003A6FC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4E5992444B995003A6FC5 /* AppDelegate.swift */; };
 		C6C4E59C2444B995003A6FC5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4E59B2444B995003A6FC5 /* SceneDelegate.swift */; };
 		C6C4E59E2444B995003A6FC5 /* MediaFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4E59D2444B995003A6FC5 /* MediaFeedViewController.swift */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		C618D4B12444C06200414650 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		C66693A92446178D0013BFBA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		C66693AD244619130013BFBA /* MediaFeedDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MediaFeedDataModel.xcdatamodel; sourceTree = "<group>"; };
 		C6C4E5962444B995003A6FC5 /* AVFoundation_MediaFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVFoundation_MediaFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C4E5992444B995003A6FC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C4E59B2444B995003A6FC5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C66693AB244617E50013BFBA /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C66693A92446178D0013BFBA /* CoreDataManager.swift */,
+				C66693AC244619130013BFBA /* MediaFeedDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		C6C4E58D2444B995003A6FC5 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +79,7 @@
 			children = (
 				C6C4E5992444B995003A6FC5 /* AppDelegate.swift */,
 				C6C4E59B2444B995003A6FC5 /* SceneDelegate.swift */,
+				C66693AB244617E50013BFBA /* CoreData */,
 				C6F608E52444C93300258450 /* Model */,
 				C6C4E5AF2444BAF0003A6FC5 /* Controllers */,
 				C6C4E5B02444BAFA003A6FC5 /* ReusableViews */,
@@ -175,11 +189,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C618D4B22444C06200414650 /* HeaderView.swift in Sources */,
+				C66693AE244619130013BFBA /* MediaFeedDataModel.xcdatamodeld in Sources */,
 				C6DBD4C72444EB50004C11BD /* URL+VideoPreviewThumbnail.swift in Sources */,
 				C6F608E42444C40000258450 /* MediaObject.swift in Sources */,
 				C6C4E59E2444B995003A6FC5 /* MediaFeedViewController.swift in Sources */,
 				C6C4E59A2444B995003A6FC5 /* AppDelegate.swift in Sources */,
 				C6C4E5AE2444BAD1003A6FC5 /* MediaCell.swift in Sources */,
+				C66693AA2446178D0013BFBA /* CoreDataManager.swift in Sources */,
 				C6C4E59C2444B995003A6FC5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +394,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C66693AC244619130013BFBA /* MediaFeedDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C66693AD244619130013BFBA /* MediaFeedDataModel.xcdatamodel */,
+			);
+			currentVersion = C66693AD244619130013BFBA /* MediaFeedDataModel.xcdatamodel */;
+			path = MediaFeedDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C6C4E58E2444B995003A6FC5 /* Project object */;
 }
