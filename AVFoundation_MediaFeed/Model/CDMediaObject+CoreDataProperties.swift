@@ -17,10 +17,10 @@ extension CDMediaObject {
         return NSFetchRequest<CDMediaObject>(entityName: "CDMediaObject")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var createdDate: Date?
     @NSManaged public var caption: String?
-    @NSManaged public var videoData: Data?
+    @NSManaged public var createdDate: Date?
+    @NSManaged public var id: String?
     @NSManaged public var imageData: Data?
+    @NSManaged public var videoData: Data?
 
 }

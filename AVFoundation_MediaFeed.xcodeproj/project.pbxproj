@@ -10,8 +10,8 @@
 		C618D4B22444C06200414650 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C618D4B12444C06200414650 /* HeaderView.swift */; };
 		C66693AA2446178D0013BFBA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66693A92446178D0013BFBA /* CoreDataManager.swift */; };
 		C66693AE244619130013BFBA /* MediaFeedDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C66693AC244619130013BFBA /* MediaFeedDataModel.xcdatamodeld */; };
-		C66693B124461BD80013BFBA /* CDMediaObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66693AF24461BD80013BFBA /* CDMediaObject+CoreDataClass.swift */; };
-		C66693B224461BD80013BFBA /* CDMediaObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66693B024461BD80013BFBA /* CDMediaObject+CoreDataProperties.swift */; };
+		C687FAAA24461D2300C03B4C /* CDMediaObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687FAA824461D2300C03B4C /* CDMediaObject+CoreDataClass.swift */; };
+		C687FAAB24461D2300C03B4C /* CDMediaObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C687FAA924461D2300C03B4C /* CDMediaObject+CoreDataProperties.swift */; };
 		C6C4E59A2444B995003A6FC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4E5992444B995003A6FC5 /* AppDelegate.swift */; };
 		C6C4E59C2444B995003A6FC5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4E59B2444B995003A6FC5 /* SceneDelegate.swift */; };
 		C6C4E59E2444B995003A6FC5 /* MediaFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4E59D2444B995003A6FC5 /* MediaFeedViewController.swift */; };
@@ -20,6 +20,7 @@
 		C6C4E5A62444B998003A6FC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C4E5A42444B998003A6FC5 /* LaunchScreen.storyboard */; };
 		C6C4E5AE2444BAD1003A6FC5 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4E5AD2444BAD1003A6FC5 /* MediaCell.swift */; };
 		C6DBD4C72444EB50004C11BD /* URL+VideoPreviewThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DBD4C62444EB50004C11BD /* URL+VideoPreviewThumbnail.swift */; };
+		C6E7544C244751E300EE8639 /* Data+ConvertURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E7544B244751E300EE8639 /* Data+ConvertURL.swift */; };
 		C6F608E42444C40000258450 /* MediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F608E32444C40000258450 /* MediaObject.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,8 +28,8 @@
 		C618D4B12444C06200414650 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		C66693A92446178D0013BFBA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C66693AD244619130013BFBA /* MediaFeedDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MediaFeedDataModel.xcdatamodel; sourceTree = "<group>"; };
-		C66693AF24461BD80013BFBA /* CDMediaObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMediaObject+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C66693B024461BD80013BFBA /* CDMediaObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMediaObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C687FAA824461D2300C03B4C /* CDMediaObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMediaObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C687FAA924461D2300C03B4C /* CDMediaObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMediaObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C6C4E5962444B995003A6FC5 /* AVFoundation_MediaFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVFoundation_MediaFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C4E5992444B995003A6FC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C4E59B2444B995003A6FC5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +40,7 @@
 		C6C4E5A72444B998003A6FC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C4E5AD2444BAD1003A6FC5 /* MediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
 		C6DBD4C62444EB50004C11BD /* URL+VideoPreviewThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+VideoPreviewThumbnail.swift"; sourceTree = "<group>"; };
+		C6E7544B244751E300EE8639 /* Data+ConvertURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+ConvertURL.swift"; sourceTree = "<group>"; };
 		C6F608E32444C40000258450 /* MediaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 			children = (
 				C6C4E5992444B995003A6FC5 /* AppDelegate.swift */,
 				C6C4E59B2444B995003A6FC5 /* SceneDelegate.swift */,
+				C6E7544D244751E800EE8639 /* Extensions */,
 				C66693AB244617E50013BFBA /* CoreData */,
 				C6F608E52444C93300258450 /* Model */,
 				C6C4E5AF2444BAF0003A6FC5 /* Controllers */,
@@ -99,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				C6C4E59D2444B995003A6FC5 /* MediaFeedViewController.swift */,
-				C6DBD4C62444EB50004C11BD /* URL+VideoPreviewThumbnail.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -113,12 +115,21 @@
 			path = ReusableViews;
 			sourceTree = "<group>";
 		};
+		C6E7544D244751E800EE8639 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C6DBD4C62444EB50004C11BD /* URL+VideoPreviewThumbnail.swift */,
+				C6E7544B244751E300EE8639 /* Data+ConvertURL.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C6F608E52444C93300258450 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C6F608E32444C40000258450 /* MediaObject.swift */,
-				C66693AF24461BD80013BFBA /* CDMediaObject+CoreDataClass.swift */,
-				C66693B024461BD80013BFBA /* CDMediaObject+CoreDataProperties.swift */,
+				C687FAA824461D2300C03B4C /* CDMediaObject+CoreDataClass.swift */,
+				C687FAA924461D2300C03B4C /* CDMediaObject+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,14 +205,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C66693B124461BD80013BFBA /* CDMediaObject+CoreDataClass.swift in Sources */,
+				C687FAAA24461D2300C03B4C /* CDMediaObject+CoreDataClass.swift in Sources */,
+				C6E7544C244751E300EE8639 /* Data+ConvertURL.swift in Sources */,
 				C618D4B22444C06200414650 /* HeaderView.swift in Sources */,
 				C66693AE244619130013BFBA /* MediaFeedDataModel.xcdatamodeld in Sources */,
 				C6DBD4C72444EB50004C11BD /* URL+VideoPreviewThumbnail.swift in Sources */,
 				C6F608E42444C40000258450 /* MediaObject.swift in Sources */,
 				C6C4E59E2444B995003A6FC5 /* MediaFeedViewController.swift in Sources */,
 				C6C4E59A2444B995003A6FC5 /* AppDelegate.swift in Sources */,
-				C66693B224461BD80013BFBA /* CDMediaObject+CoreDataProperties.swift in Sources */,
+				C687FAAB24461D2300C03B4C /* CDMediaObject+CoreDataProperties.swift in Sources */,
 				C6C4E5AE2444BAD1003A6FC5 /* MediaCell.swift in Sources */,
 				C66693AA2446178D0013BFBA /* CoreDataManager.swift in Sources */,
 				C6C4E59C2444B995003A6FC5 /* SceneDelegate.swift in Sources */,

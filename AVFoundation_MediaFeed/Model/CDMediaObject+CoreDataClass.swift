@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(CDMediaObject)
+
 public class CDMediaObject: NSManagedObject {
 
 }
