@@ -16,7 +16,7 @@ class MediaFeedViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var photoButton: UIBarButtonItem!
     @IBOutlet weak var videoButton: UIBarButtonItem!
     
-    private var mediaObjects = [MediaObject]() {
+    private var mediaObjects = [CDMediaObject]() {
         didSet{
             collectionView.reloadData()
         }
@@ -32,14 +32,22 @@ class MediaFeedViewController: UIViewController, UIImagePickerControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+            videoButton.isEnabled = false
+        }
+        fetchMediaObjects()
+        
+    }
+    //NSPredicate - allows us to filter or sort data from core data fetches
+    //nsfetchresultscontroller - similar to firebase listener, adds automatic collection reloading of modified data
+    private func fetchMediaObjects() {
+        mediaObjects = CoreDataManager.shared.fetchMediaObject()
     }
     
     private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
-            videoButton.isEnabled = false
-        }
+        
     }
 
     @IBAction func videoButtonPressed(_ sender: UIBarButtonItem) {
@@ -54,10 +62,11 @@ class MediaFeedViewController: UIViewController, UIImagePickerControllerDelegate
     private func playRandomVideo(in view: UIView) {
         
         //want all non-nil media objects from the MediaObjects array
-        let videoURLs = mediaObjects.compactMap {$0.videoURL}
+        let videoDataObjects = mediaObjects.compactMap {$0.videoData}
         
         //randomly pick one video (.randomElement returns an optional)
-        if let videoURL = videoURLs.randomElement() {
+        if let videoObject = videoDataObjects.randomElement(),
+            let videoURL = videoObject.convertToURL() {
             let player = AVPlayer(url: videoURL)
             
             //create a sublayer
@@ -90,14 +99,17 @@ extension MediaFeedViewController: UIPickerViewDelegate, UINavigationControllerD
         }
         switch mediaType {
         case "public.image":
-            if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                let imageData = originalImage.jpegData(compressionQuality: 1.0)
-                let mediaObject = MediaObject(imageData: imageData, videoURL: nil, caption: nil)
+            if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+                let imageData = originalImage.jpegData(compressionQuality: 1.0) {
+                
+                let mediaObject = CoreDataManager.shared.createMediaObject(imageData, videoURL: nil)
                 mediaObjects.append(mediaObject)
             }
         case "public.movie":
-            if let mediaURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
-                let mediaObject = MediaObject(imageData: nil, videoURL: mediaURL, caption: nil)
+            if let mediaURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL, let image = mediaURL.videoPreviewThumbnail(),
+                let imageData = image.jpegData(compressionQuality: 1.0) {
+                
+                let mediaObject = CoreDataManager.shared.createMediaObject(imageData, videoURL: mediaURL)
                 mediaObjects.append(mediaObject)
             }
         default:
@@ -129,7 +141,7 @@ extension MediaFeedViewController: UICollectionViewDelegateFlowLayout, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let mediaObject = mediaObjects[indexPath.row]
-        guard let mediaURL = mediaObject.videoURL else { return }
+        guard let mediaURL = mediaObject.videoData?.convertToURL() else { return }
         
         let playerViewController = AVPlayerViewController()
         
